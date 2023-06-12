@@ -40,13 +40,34 @@
 <h4 style='text-align:center;'>Enter your array with proper formatting, then pick an algo to run on it</h4>
 <h6 style='text-align:center;'>Enter integers without brackets, separated by spaces example: enter [3,1,2] as 3 1 2</h6><br><br>
 <div class='center'>
+    <label for="algos">Choose an algorithm:</label>
+    <select name="algos" id="algos">
+    <option value="merge">Mergesort</option>
+    <option value="insert">Insertion Sort</option>
+    <option value="select">Selection Sort</option>
+    <option value="bubble">Bubble Sort</option>
+    <option value="quick">Quicksort</option>
+    <option value="heap">Heapsort</option>
+    <option value="count">Counting Sort</option>
+    <option value="radix">Radix Sort</option>
+    <option value="bucket">Bucket Sort</option>
+  </select>
+  <br><br>
   <div class=''>
       <input type='text' id='inputfield' placeholder='example: enter [3,1,2] as 3 1 2'><br><br>
-      <button onclick='main()'>Sort</button>
+      <button onclick='main(document.getElementById("algos").value)'>Sort</button>
   </div>
+  <div id="output"></div>
 </div>
   <script>
-    function main(){
+    outputdiv=document.getElementById("output");
+    function main(al){
+        if(al==="insert"){
+            appendtext("this works now");
+        }
+    }
+    function appendtext(text){
+        outputdiv.innerHTML+=text+'<br>';
     }
   </script>
 </body>

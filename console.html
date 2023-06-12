@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #console {
+      background-color: black;
+      color: white;
+      font-family: monospace;
+      height: 200px;
+      overflow-y: auto;
+      padding: 10px;
+    }
+    #input {
+      background-color: black;
+      color: white;
+      font-family: monospace;
+      padding: 10px;
+      width: 100%;
+    }
+  </style>
+  <script src="console.js">
+  </script>
+</head>
+<body>
+  <div id="console"></div>
+  <input id="input" type="text" onkeydown="if (event.keyCode === 13) handleInput()">
+</body>
+</html>
