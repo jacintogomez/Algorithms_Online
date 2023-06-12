@@ -4,5 +4,4 @@ function handleInput() {
       var consoleElement = document.getElementById('console');
       consoleElement.innerHTML += '> ' + command + '<br>';
       inputElement.value = '';
-
 }
