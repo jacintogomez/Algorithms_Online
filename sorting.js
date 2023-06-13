@@ -11,7 +11,7 @@ function main(choice,s){
             print(ar);
             break;
         case 'insert':
-            insert(ar);
+            insertion(ar);
             break;
         case 'select':
             select(ar);
@@ -84,9 +84,39 @@ function merge(ar,begin,end,step){
     appendtext(" this recursive call is "+step+" level(s) deep");
 }
 
+function insertion(ar){
+    for(var i=1;i<ar.length;i++){
+        var key=ar[i];
+        var j=i-1;
+        while(j>=0&&ar[j]>key){
+            ar[j+1]=ar[j];
+            j--;
+        }
+        var temp=ar[j+1];
+        ar[j+1]=key;
+        print(ar);
+        printsortedportion(countspaces(ar,i));
+        if(key!==temp) {
+            appendtext(key+" was the next element in line, and was inserted before ");
+        }else{
+            appendtext("next element was the largest so far, no insertions were necessary");
+        }
+    }
+}
+
 function countspacesmerge(ve,index){
     var count=0;
     for(var i=0;i<index;i++){
+        var element=ve[i].toString();
+        count+=element.length;
+    }
+    count+=index;
+    return count;
+}
+
+function countspaces(ve,index){
+    var count=0;
+    for(var i=0;i<=index;i++){
         var element=ve[i].toString();
         count+=element.length;
     }
@@ -113,6 +143,14 @@ function printsortedportionmerge(blanks,range){
         addtext('_');
     }
     addtext("| <-segment just sorted... ");
+}
+
+function printsortedportion(index){
+    addtext('|');
+    for(var i=0;i<index;i++){
+        addtext('_');
+    }
+    addtext("| <-sorted portion... ");
 }
 
 function print(ar){
