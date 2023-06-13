@@ -8,13 +8,12 @@ function main(choice,s){
     switch(choice){
         case 'merge':
             merge(ar,0,ar.length-1,0);
-            print(ar);
             break;
         case 'insert':
             insertion(ar);
             break;
         case 'select':
-            select(ar);
+            selection(ar);
             break;
         case 'bubble':
             bubble(ar);
@@ -100,6 +99,29 @@ function insertion(ar){
             appendtext(key+" was the next element in line, and was inserted before ");
         }else{
             appendtext("next element was the largest so far, no insertions were necessary");
+        }
+    }
+}
+
+function selection(ar){
+    for(var i=0;i<ar.length;i++){
+        var min=i;
+        for(var j=i+1;j<ar.length;j++){
+            if(ar[min]>ar[j]){
+                min=j;
+            }
+        }
+        if(min!==i){
+            var temp=ar[min];
+            ar[min]=ar[i];
+            ar[i]=temp;
+        }
+        print(ar);
+        printsortedportion(countspaces(ar,i));
+        if(ar[min]!==ar[i]){
+            appendtext(" the next largest was "+ar[i]+" and was swapped with "+ar[min]);
+        }else{
+            appendtext(" "+ar[min]+" happened to be the next smallest, so no swap occurred");
         }
     }
 }
