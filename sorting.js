@@ -126,6 +126,27 @@ function selection(ar){
     }
 }
 
+function bubble(ar){
+    for(var i=ar.length-1;i>=0;i--){
+        var swap=false;
+        for(var j=0;j<i;j++) {
+            if(ar[j]>ar[j+1]){
+                var temp=ar[j+1];
+                ar[j+1]=ar[j];
+                ar[j]=temp;
+                swap=true;
+            }
+        }
+        print(ar);
+        printsortedportionbubble(i,ar);
+        if(swap) {
+            appendtext(" " + ar[i] + " was the next largest, and was moved up to the end");
+        }else{
+            appendtext(" next largest element "+ar[i]+" was already in sorted position");
+        }
+    }
+}
+
 function countspacesmerge(ve,index){
     var count=0;
     for(var i=0;i<index;i++){
@@ -136,6 +157,16 @@ function countspacesmerge(ve,index){
     return count;
 }
 
+function countspacesbubble(ve,index){
+    var count=0;
+    for(var i=0;i<=index-1;i++){
+        var element=ve[i].toString();
+        count+=element.length;
+    }
+    count+=index+1;
+    return count;
+}
+
 function countspaces(ve,index){
     var count=0;
     for(var i=0;i<=index;i++){
@@ -143,6 +174,16 @@ function countspaces(ve,index){
         count+=element.length;
     }
     count+=index;
+    return count;
+}
+
+function counttotalspaces(ve){
+    var count=0;
+    for(var i=0;i<ve.length;i++){
+        var element=ve[i].toString();
+        count+=element.length;
+    }
+    count+=ve.length-1+2;//-1 because there will be 1 less comma than elements, +2 for the 2 brackets
     return count;
 }
 
@@ -165,6 +206,20 @@ function printsortedportionmerge(blanks,range){
         addtext('_');
     }
     addtext("| <-segment just sorted... ");
+}
+
+function printsortedportionbubble(index,ve){
+    var totalchars=counttotalspaces(ve);
+    var spacestoindex=countspacesbubble(ve,index);
+    var sortedduration=totalchars-spacestoindex;
+    for(var i=1;i<spacestoindex;i++){
+        addtext('&nbsp;');
+    }
+    addtext("|");
+    for(var i=1;i<sortedduration;i++){
+        addtext("_");
+    }
+    addtext("| <-sorted portion... ");
 }
 
 function printsortedportion(index){
