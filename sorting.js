@@ -19,7 +19,7 @@ function main(choice,s){
             bubble(ar);
             break;
         case 'quick':
-            quick(ar);
+            quick(ar,0,ar.length-1,0);
             break;
         case 'heap':
             heap(ar);
@@ -147,6 +147,34 @@ function bubble(ar){
     }
 }
 
+function quick(ar,low,high,step){
+    if(low<high){
+        var pivot=partition(ar,low,high,step);
+        quick(ar,low,pivot-1,step+1);
+        quick(ar,pivot+1,high,step+1);
+    }
+}
+
+function partition(ar,low,high,step){
+    var pivot=ar[high];
+    var i=low-1;
+    for(var j=low;j<=high-1;j++){
+        if(ar[j]<pivot){
+            i++;
+            var temp=ar[j];
+            ar[j]=ar[i];
+            ar[i]=temp;
+        }
+    }
+    var other=ar[i+1];
+    ar[i+1]=ar[high];
+    ar[high]=other;
+    printsameline(ar);
+    printsortedportionquick(i+1,ar);
+    appendtext("     This recursive call is "+step+" level(s) deep");
+    return i+1;
+}
+
 function countspacesmerge(ve,index){
     var count=0;
     for(var i=0;i<index;i++){
@@ -178,6 +206,16 @@ function countspaces(ve,index){
 }
 
 function counttotalspaces(ve){
+    var count=0;
+    for(var i=0;i<ve.length;i++){
+        var element=ve[i].toString();
+        count+=element.length;
+    }
+    count+=ve.length-1+2;//-1 because there will be 1 less comma than elements, +2 for the 2 brackets
+    return count;
+}
+
+function counttotalspacesquick(ve){
     var count=0;
     for(var i=0;i<ve.length;i++){
         var element=ve[i].toString();
@@ -222,6 +260,23 @@ function printsortedportionbubble(index,ve){
     addtext("| <-sorted portion... ");
 }
 
+function printsortedportionquick(index,ve){
+    var totalchars=counttotalspacesquick(ve)-2; //-2 to subtract the brackets
+    var spacestoindex=countspacesbubble(ve,index)-2; //-2 to subtract the two |'s
+    var spacesuptopivot=countspacesbubble(ve,index+1)-2;
+    var pivotspaces=spacesuptopivot-spacestoindex-1;
+    var afterpiv=totalchars-spacesuptopivot-1;
+    appendtext(" <-- Pivot is "<<ve[index]<<", numbers greater than it placed to the left, smaller to the right");
+    if(index!==0){addtext("|");}
+    else{spacestoindex++;}
+    for(var i=1;i<=spacestoindex;i++){addtext("_");}
+    addtext("|");
+    for(var i=1;i<=pivotspaces;i++){addtext(" ");}
+    addtext("|");
+    for(var i=1;i<=afterpiv;i++){addtext("_");}
+    if(index!==ve.length-1){addtext("|");}
+}
+
 function printsortedportion(index){
     addtext('|');
     for(var i=0;i<index;i++){
@@ -236,6 +291,18 @@ function print(ar){
         addtext(ar[x].toString()+' ');
     }
     appendtext(ar[ar.length-1].toString()+']');
+}
+
+function printsameline(ar){
+    if(ar.length===0){
+        addtext("[]");
+        return;
+    }
+    addtext("[");
+    for(var x=0;x<ar.length-1;x++){
+        addtext(ar[x]+",");
+    }
+    addtext(ar[ar.length-1]+"]");
 }
 
 function makeintoarray(s){
