@@ -266,7 +266,7 @@ function printsortedportionquick(index,ve){
     var spacesuptopivot=countspacesbubble(ve,index+1)-2;
     var pivotspaces=spacesuptopivot-spacestoindex-1;
     var afterpiv=totalchars-spacesuptopivot-1;
-    appendtext(" <-- Pivot is "<<ve[index]<<", numbers greater than it placed to the left, smaller to the right");
+    appendtext(" <-- Pivot is "+ve[index]+", numbers greater than it placed to the left, smaller to the right");
     if(index!==0){addtext("|");}
     else{spacestoindex++;}
     for(var i=1;i<=spacestoindex;i++){addtext("_");}
