@@ -208,6 +208,36 @@ function heapify(ar,n,parent){
     }
 }
 
+function count(ar){
+    var max=getmax(ar);
+    addtext("This will use the max value of your array as the range...");
+    var n=ar.length;
+    var output = Array(n).fill(0);
+    addtext("Output array initialized as ---> ");
+    print(output);
+    var count = Array(max+1).fill(0);
+    addtext("Count array initialized as ---> ");
+    print(count);
+    for(var i=0;i<n;i++){count[ar[i]]++;}
+    addtext("Count updated with frequency of each index ---> ");
+    print(count);
+    for(var j=1;j<=max;j++){count[j]+=count[j-1];}
+    addtext("Count updated with index of each index --> ");
+    print(count);
+    for(var k=n-1;k>=0;k--){
+        appendtext("Placing "+ar[k]+" into output array");
+        output[count[ar[k]]-1]=ar[k];
+        count[ar[k]]--;
+        addtext("Output is now --> ");
+        printsameline(output);
+        addtext("  Count is now --> ");
+        print(count);
+    }
+    for (var l = 0; l < n; l++) {
+        ar[l] = output[l];
+    }
+}
+
 function countspacesmerge(ve,index){
     var count=0;
     for(var i=0;i<index;i++){
@@ -316,6 +346,26 @@ function printsortedportion(index){
         addtext('_');
     }
     addtext("| <-sorted portion... ");
+}
+
+function getmax(ar){
+    var mx=ar[0];
+    for(const i of ar){
+        if(i>mx){
+            mx=i;
+        }
+    }
+    return mx;
+}
+
+function getmin(ar){
+    var mn=ar[0];
+    for(const i of ar){
+        if(i<mn){
+            mn=i;
+        }
+    }
+    return mn;
 }
 
 function print(ar){
