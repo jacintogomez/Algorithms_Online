@@ -175,6 +175,39 @@ function partition(ar,low,high,step){
     return i+1;
 }
 
+function heap(ar){
+    addtext("Call heapify to turn array into max heap --> ");
+    var n=ar.length;
+    for(var i=n/2-1;i>=0;i--){heapify(ar,n,i);}
+    print(ar);
+    appendtext("Keep calling heapify each time a max element is taken away..");
+    for(var j=n-1;j>=1;j--){
+        var temp=ar[0];
+        ar[0]=ar[j];
+        ar[j]=temp;
+        printsameline(ar);
+        appendtext("   Switched heap root "+temp+" with last leaf "+ar[0]+", then call heapify on new root");
+        heapify(ar,j,0);
+        print(ar);
+        printsortedportionbubble(j,ar);
+        appendtext(ar[j]+" removed from heap");
+    }
+}
+
+function heapify(ar,n,parent){
+    var max=parent;
+    var left=2*parent+1;
+    var right=2*parent+2;
+    if(left<n&&ar[left]>ar[max]){max=left;}
+    if(right<n&&ar[right]>ar[max]){max=right;}
+    if(max!==parent){
+        var temp=ar[parent];
+        ar[parent]=ar[max];
+        ar[max]=temp;
+        heapify(ar,n,max);
+    }
+}
+
 function countspacesmerge(ve,index){
     var count=0;
     for(var i=0;i<index;i++){
