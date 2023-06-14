@@ -238,6 +238,30 @@ function count(ar){
     }
 }
 
+function countsort(ar,exp){
+    let n=ar.length;
+    let output=Array(n).fill(0);
+    let count=Array(10).fill(0);
+    for(let i=0;i<n;i++){count[Math.floor((ar[i]/exp))%10]++;}
+    for(let i=1;i<10;i++){count[i]+=count[i-1];}
+    for(let i=n-1;i>=0;i--){
+        output[count[Math.floor((ar[i]/exp))%10]-1]=ar[i];
+        count[Math.floor((ar[i]/exp))%10]--;
+    }
+    for(let i=0;i<n;i++){ar[i]=output[i];}
+}
+
+function radix(ar){
+    let step=1;
+    let m=getmax(ar);
+    for(let exp=1;Math.floor(m/exp)>0;exp*=10){
+        countsort(ar,exp);
+        printsameline(ar);
+        appendtext("<--- iteration "+step+" called counting sort on the "+exp+"'s digit");
+        step++;
+    }
+}
+
 function countspacesmerge(ve,index){
     var count=0;
     for(var i=0;i<index;i++){
