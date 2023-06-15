@@ -3,7 +3,7 @@
 outputdiv=document.getElementById("output");
 
 function main(choice,s){
-    var ar=makeintoarray(s);
+    let ar=makeintoarray(s);
     appendtext('');
     switch(choice){
         case 'merge':
@@ -41,15 +41,15 @@ function main(choice,s){
 }
 
 function mergesort(ar,left,mid,right){
-    var half1=[];
-    var half2=[];
-    var half1length=mid-left+1;
-    var half2length=right-mid;
-    for(var i=0;i<half1length;i++){half1.push(ar[left+i]);}
-    for(var i=0;i<half2length;i++){half2.push(ar[mid+i+1]);}
-    var i=0;
-    var j=0;
-    var k=left;
+    let half1=[];
+    let half2=[];
+    let half1length=mid-left+1;
+    let half2length=right-mid;
+    for(let i=0;i<half1length;i++){half1.push(ar[left+i]);}
+    for(let i=0;i<half2length;i++){half2.push(ar[mid+i+1]);}
+    let i=0;
+    let j=0;
+    let k=left;
     while(i<half1length&&j<half2length){
         if(half1[i]<=half2[j]){
             ar[k]=half1[i];
@@ -74,7 +74,7 @@ function mergesort(ar,left,mid,right){
 
 function merge(ar,begin,end,step){
     if(begin>=end){return;}
-    var mid=Math.floor((begin+end)/2);
+    let mid=Math.floor((begin+end)/2);
     merge(ar,begin,mid,step+1);
     merge(ar,mid+1,end,step+1);
     mergesort(ar,begin,mid,end);
@@ -96,14 +96,14 @@ function insertionwithoutmessages(ar){
 }
 
 function insertion(ar){
-    for(var i=1;i<ar.length;i++){
-        var key=ar[i];
-        var j=i-1;
+    for(let i=1;i<ar.length;i++){
+        let key=ar[i];
+        let j=i-1;
         while(j>=0&&ar[j]>key){
             ar[j+1]=ar[j];
             j--;
         }
-        var temp=ar[j+1];
+        let temp=ar[j+1];
         ar[j+1]=key;
         print(ar);
         printsortedportion(countspaces(ar,i));
@@ -116,15 +116,15 @@ function insertion(ar){
 }
 
 function selection(ar){
-    for(var i=0;i<ar.length;i++){
-        var min=i;
-        for(var j=i+1;j<ar.length;j++){
+    for(let i=0;i<ar.length;i++){
+        let min=i;
+        for(let j=i+1;j<ar.length;j++){
             if(ar[min]>ar[j]){
                 min=j;
             }
         }
         if(min!==i){
-            var temp=ar[min];
+            let temp=ar[min];
             ar[min]=ar[i];
             ar[i]=temp;
         }
@@ -139,11 +139,11 @@ function selection(ar){
 }
 
 function bubble(ar){
-    for(var i=ar.length-1;i>=0;i--){
-        var swap=false;
-        for(var j=0;j<i;j++) {
+    for(let i=ar.length-1;i>=0;i--){
+        let swap=false;
+        for(let j=0;j<i;j++) {
             if(ar[j]>ar[j+1]){
-                var temp=ar[j+1];
+                let temp=ar[j+1];
                 ar[j+1]=ar[j];
                 ar[j]=temp;
                 swap=true;
@@ -161,24 +161,24 @@ function bubble(ar){
 
 function quick(ar,low,high,step){
     if(low<high){
-        var pivot=partition(ar,low,high,step);
+        let pivot=partition(ar,low,high,step);
         quick(ar,low,pivot-1,step+1);
         quick(ar,pivot+1,high,step+1);
     }
 }
 
 function partition(ar,low,high,step){
-    var pivot=ar[high];
-    var i=low-1;
-    for(var j=low;j<=high-1;j++){
+    let pivot=ar[high];
+    let i=low-1;
+    for(let j=low;j<=high-1;j++){
         if(ar[j]<pivot){
             i++;
-            var temp=ar[j];
+            let temp=ar[j];
             ar[j]=ar[i];
             ar[i]=temp;
         }
     }
-    var other=ar[i+1];
+    let other=ar[i+1];
     ar[i+1]=ar[high];
     ar[high]=other;
     printsameline(ar);
@@ -189,12 +189,12 @@ function partition(ar,low,high,step){
 
 function heap(ar){
     addtext("Call heapify to turn array into max heap --> ");
-    var n=ar.length;
-    for(var i=n/2-1;i>=0;i--){heapify(ar,n,i);}
+    let n=ar.length;
+    for(let i=n/2-1;i>=0;i--){heapify(ar,n,i);}
     print(ar);
     appendtext("Keep calling heapify each time a max element is taken away..");
-    for(var j=n-1;j>=1;j--){
-        var temp=ar[0];
+    for(let j=n-1;j>=1;j--){
+        let temp=ar[0];
         ar[0]=ar[j];
         ar[j]=temp;
         printsameline(ar);
@@ -207,13 +207,13 @@ function heap(ar){
 }
 
 function heapify(ar,n,parent){
-    var max=parent;
-    var left=2*parent+1;
-    var right=2*parent+2;
+    let max=parent;
+    let left=2*parent+1;
+    let right=2*parent+2;
     if(left<n&&ar[left]>ar[max]){max=left;}
     if(right<n&&ar[right]>ar[max]){max=right;}
     if(max!==parent){
-        var temp=ar[parent];
+        let temp=ar[parent];
         ar[parent]=ar[max];
         ar[max]=temp;
         heapify(ar,n,max);
@@ -221,22 +221,22 @@ function heapify(ar,n,parent){
 }
 
 function count(ar){
-    var max=getmax(ar);
+    let max=getmax(ar);
     addtext("This will use the max value of your array as the range...");
-    var n=ar.length;
-    var output = Array(n).fill(0);
+    let n=ar.length;
+    let output = Array(n).fill(0);
     addtext("Output array initialized as ---> ");
     print(output);
-    var count = Array(max+1).fill(0);
+    let count = Array(max+1).fill(0);
     addtext("Count array initialized as ---> ");
     print(count);
-    for(var i=0;i<n;i++){count[ar[i]]++;}
+    for(let i=0;i<n;i++){count[ar[i]]++;}
     addtext("Count updated with frequency of each index ---> ");
     print(count);
-    for(var j=1;j<=max;j++){count[j]+=count[j-1];}
+    for(let j=1;j<=max;j++){count[j]+=count[j-1];}
     addtext("Count updated with index of each index --> ");
     print(count);
-    for(var k=n-1;k>=0;k--){
+    for(let k=n-1;k>=0;k--){
         appendtext("Placing "+ar[k]+" into output array");
         output[count[ar[k]]-1]=ar[k];
         count[ar[k]]--;
@@ -245,7 +245,7 @@ function count(ar){
         addtext("  Count is now --> ");
         print(count);
     }
-    for (var l = 0; l < n; l++) {
+    for (let l = 0; l < n; l++) {
         ar[l] = output[l];
     }
 }
@@ -328,9 +328,9 @@ function bucket(ar){
 }
 
 function countspacesmerge(ve,index){
-    var count=0;
-    for(var i=0;i<index;i++){
-        var element=ve[i].toString();
+    let count=0;
+    for(let i=0;i<index;i++){
+        let element=ve[i].toString();
         count+=element.length;
     }
     count+=index;
@@ -338,9 +338,9 @@ function countspacesmerge(ve,index){
 }
 
 function countspacesbubble(ve,index){
-    var count=0;
-    for(var i=0;i<=index-1;i++){
-        var element=ve[i].toString();
+    let count=0;
+    for(let i=0;i<=index-1;i++){
+        let element=ve[i].toString();
         count+=element.length;
     }
     count+=index+1;
@@ -348,9 +348,9 @@ function countspacesbubble(ve,index){
 }
 
 function countspaces(ve,index){
-    var count=0;
-    for(var i=0;i<=index;i++){
-        var element=ve[i].toString();
+    let count=0;
+    for(let i=0;i<=index;i++){
+        let element=ve[i].toString();
         count+=element.length;
     }
     count+=index;
@@ -358,9 +358,9 @@ function countspaces(ve,index){
 }
 
 function counttotalspaces(ve){
-    var count=0;
-    for(var i=0;i<ve.length;i++){
-        var element=ve[i].toString();
+    let count=0;
+    for(let i=0;i<ve.length;i++){
+        let element=ve[i].toString();
         count+=element.length;
     }
     count+=ve.length-1+2;//-1 because there will be 1 less comma than elements, +2 for the 2 brackets
@@ -368,9 +368,9 @@ function counttotalspaces(ve){
 }
 
 function counttotalspacesquick(ve){
-    var count=0;
-    for(var i=0;i<ve.length;i++){
-        var element=ve[i].toString();
+    let count=0;
+    for(let i=0;i<ve.length;i++){
+        let element=ve[i].toString();
         count+=element.length;
     }
     count+=ve.length-1+2;//-1 because there will be 1 less comma than elements, +2 for the 2 brackets
@@ -378,9 +378,9 @@ function counttotalspacesquick(ve){
 }
 
 function countmiddleunderscores(ve,start,end){
-    var count=0;
-    for(var i=start;i<=end;i++){
-        var element=ve[i].toString();
+    let count=0;
+    for(let i=start;i<=end;i++){
+        let element=ve[i].toString();
         count+=element.length;
     }
     count+=end-start;
@@ -388,57 +388,57 @@ function countmiddleunderscores(ve,start,end){
 }
 
 function printsortedportionmerge(blanks,range){
-    for(var i=0;i<blanks;i++){
+    for(let i=0;i<blanks;i++){
         addtext('&nbsp;');
     }
     addtext('|');
-    for(var i=0;i<range;i++){
+    for(let i=0;i<range;i++){
         addtext('_');
     }
     addtext("| <-segment just sorted... ");
 }
 
 function printsortedportionbubble(index,ve){
-    var totalchars=counttotalspaces(ve);
-    var spacestoindex=countspacesbubble(ve,index);
-    var sortedduration=totalchars-spacestoindex;
-    for(var i=1;i<spacestoindex;i++){
+    let totalchars=counttotalspaces(ve);
+    let spacestoindex=countspacesbubble(ve,index);
+    let sortedduration=totalchars-spacestoindex;
+    for(let i=1;i<spacestoindex;i++){
         addtext('&nbsp;');
     }
     addtext("|");
-    for(var i=1;i<sortedduration;i++){
+    for(let i=1;i<sortedduration;i++){
         addtext("_");
     }
     addtext("| <-sorted portion... ");
 }
 
 function printsortedportionquick(index,ve){
-    var totalchars=counttotalspacesquick(ve)-2; //-2 to subtract the brackets
-    var spacestoindex=countspacesbubble(ve,index)-2; //-2 to subtract the two |'s
-    var spacesuptopivot=countspacesbubble(ve,index+1)-2;
-    var pivotspaces=spacesuptopivot-spacestoindex-1;
-    var afterpiv=totalchars-spacesuptopivot-1;
+    let totalchars=counttotalspacesquick(ve)-2; //-2 to subtract the brackets
+    let spacestoindex=countspacesbubble(ve,index)-2; //-2 to subtract the two |'s
+    let spacesuptopivot=countspacesbubble(ve,index+1)-2;
+    let pivotspaces=spacesuptopivot-spacestoindex-1;
+    let afterpiv=totalchars-spacesuptopivot-1;
     appendtext(" <-- Pivot is "+ve[index]+", numbers greater than it placed to the left, smaller to the right");
     if(index!==0){addtext("|");}
     else{spacestoindex++;}
-    for(var i=1;i<=spacestoindex;i++){addtext("_");}
+    for(let i=1;i<=spacestoindex;i++){addtext("_");}
     addtext("|");
-    for(var i=1;i<=pivotspaces;i++){addtext(" ");}
+    for(let i=1;i<=pivotspaces;i++){addtext(" ");}
     addtext("|");
-    for(var i=1;i<=afterpiv;i++){addtext("_");}
+    for(let i=1;i<=afterpiv;i++){addtext("_");}
     if(index!==ve.length-1){addtext("|");}
 }
 
 function printsortedportion(index){
     addtext('|');
-    for(var i=0;i<index;i++){
+    for(let i=0;i<index;i++){
         addtext('_');
     }
     addtext("| <-sorted portion... ");
 }
 
 function getmax(ar){
-    var mx=ar[0];
+    let mx=ar[0];
     for(const i of ar){
         if(i>mx){
             mx=i;
@@ -448,7 +448,7 @@ function getmax(ar){
 }
 
 function getmin(ar){
-    var mn=ar[0];
+    let mn=ar[0];
     for(const i of ar){
         if(i<mn){
             mn=i;
@@ -471,14 +471,14 @@ function printsameline(ar){
         return;
     }
     addtext("[");
-    for(var x=0;x<ar.length-1;x++){
+    for(let x=0;x<ar.length-1;x++){
         addtext(ar[x]+",");
     }
     addtext(ar[ar.length-1]+"]");
 }
 
 function makeintoarray(s){
-    var real=[];
+    let real=[];
     for(let x=0;x<s.length;x+=2){
         real.push(parseInt(s[x]));
     }
