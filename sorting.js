@@ -83,6 +83,18 @@ function merge(ar,begin,end,step){
     appendtext(" this recursive call is "+step+" level(s) deep");
 }
 
+function insertionwithoutmessages(ar){
+    for(let i=1;i<ar.length;i++){
+        let key=ar[i];
+        let j=i-1;
+        while(j>=0&&ar[j]>key){
+            ar[j+1]=ar[j];
+            j--;
+        }
+        ar[j+1]=key;
+    }
+}
+
 function insertion(ar){
     for(var i=1;i<ar.length;i++){
         var key=ar[i];
@@ -259,6 +271,59 @@ function radix(ar){
         printsameline(ar);
         appendtext("<--- iteration "+step+" called counting sort on the "+exp+"'s digit");
         step++;
+    }
+}
+
+function bucket(ar){
+    let max=getmax(ar);
+    let min=getmin(ar);
+    let buckets=0;
+    // cout<<"If you want to choose your number of buckets then enter it below,"
+    //       "\notherwise enter 0 to use the square root of n"<<endl;
+    // cout<<"Number of buckets: ";
+    // cin>>buckets;
+    // while(buckets<0){
+    //     cout<<"Bucket number must be positive!"<<endl;
+    //     cout<<"Re-enter the number of buckets: ";
+    //     cin>>buckets;
+    // }
+    if(buckets===0){
+        buckets=Math.floor(Math.sqrt(ar.length));
+    }
+    let rnge=(max-min)/buckets;
+    let all=[];
+    for(let x=0;x<buckets;x++){
+        let temp=[]
+        all.push(temp);
+    }
+    for(let i=0;i<ar.length;i++){
+        let diff=(ar[i]-min)/rnge-Math.floor((ar[i]-min)/rnge);
+        if(diff===0&&ar[i]!==min){
+            all[Math.floor((ar[i]-min)/rnge)-1].push(ar[i]);
+        }else{
+            all[Math.floor((ar[i]-min)/rnge)].push(ar[i]);
+        }
+    }
+    appendtext("Sort elements of specific ranges into buckets:");
+    for(let j=0;j<all.length;j++){
+        let bucketnum=j+1;
+        addtext("Bucket "+bucketnum+": ");
+        print(all[j]);
+    }
+    for(let j=0;j<all.length;j++){
+        if(all[j].length!==0){
+            insertionwithoutmessages(all[j]);
+        }
+    }
+    appendtext("Sort each bucket with insertion sort, and concatenate into one array");
+    let k=0;
+    for(const l of all){
+        if(l.length!==0){
+            for(const i of l){
+                ar[k]=i;
+                k++;
+            }
+        }
     }
 }
 
