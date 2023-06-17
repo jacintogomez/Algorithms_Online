@@ -2,7 +2,7 @@
 
 outputdiv=document.getElementById("output");
 
-function main(choice,s){
+function main(choice,s,bn){
     cleartext();
     let ar=makeintoarray(s);
     appendtext('');
@@ -32,7 +32,7 @@ function main(choice,s){
             radix(ar);
             break;
         case 'bucket':
-            bucket(ar);
+            bucket(ar,bn);
             break;
         default:
             break;
@@ -275,20 +275,11 @@ function radix(ar){
     }
 }
 
-function bucket(ar){
+function bucket(ar,bn){
+    let buckets=parseInt(bn);
     let max=getmax(ar);
     let min=getmin(ar);
-    let buckets=0;
-    // cout<<"If you want to choose your number of buckets then enter it below,"
-    //       "\notherwise enter 0 to use the square root of n"<<endl;
-    // cout<<"Number of buckets: ";
-    // cin>>buckets;
-    // while(buckets<0){
-    //     cout<<"Bucket number must be positive!"<<endl;
-    //     cout<<"Re-enter the number of buckets: ";
-    //     cin>>buckets;
-    // }
-    if(buckets===0){
+    if(buckets<=0){
         buckets=Math.floor(Math.sqrt(ar.length));
     }
     let rnge=(max-min)/buckets;
@@ -459,6 +450,10 @@ function getmin(ar){
 }
 
 function print(ar){
+    if(ar.length===0){
+        appendtext("[]");
+        return;
+    }
     addtext('[');
     for(let x=0;x<ar.length-1;x++){
         addtext(ar[x].toString()+' ');
@@ -496,4 +491,14 @@ function addtext(text){
 
 function cleartext(){
     outputdiv.innerHTML='';
+}
+
+function toggleTextInput() {
+  let selectElement = document.getElementById("algos");
+  let textInputContainer = document.getElementById("numbuckets");
+  if (selectElement.value === "bucket") {
+    textInputContainer.classList.remove("hidden");
+  } else {
+    textInputContainer.classList.add("hidden");
+  }
 }

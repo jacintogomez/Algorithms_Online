@@ -17,6 +17,9 @@
       border: 2px solid;
       border-radius: 5px;
     }
+    .hidden {
+      display: none;
+    }
     input:hover{
       border: 1px solid aqua;
       box-shadow: 5px 10px 18px black;
@@ -57,7 +60,7 @@
 <h6 style='text-align:center;'>Enter integers without brackets, separated by spaces example: enter [3,1,2] as 3 1 2</h6><br><br>
 <div class='center'>
     <label for="algos">Choose an algorithm:</label>
-    <select name="algos" id="algos">
+    <select name="algos" id="algos" onchange="toggleTextInput()">
     <option value="merge">Mergesort</option>
     <option value="insert">Insertion Sort</option>
     <option value="select">Selection Sort</option>
@@ -71,7 +74,11 @@
   <br><br>
   <div class=''>
       <input type='text' id='inputfield' placeholder='example: enter [3,1,2] as 3 1 2'><br><br>
-      <button onclick='main(document.getElementById("algos").value,document.getElementById("inputfield").value)'>Sort</button>
+      <div id="numbuckets" class="hidden">
+          <h4>If you want to choose your number of buckets then enter it below,<br>otherwise enter 0 to use the square root of n</h4>
+        <input type="text" id="tinput" placeholder="# of buckets">
+      </div>
+      <button onclick='main(document.getElementById("algos").value,document.getElementById("inputfield").value,document.getElementById("tinput").value)'>Sort</button>
   </div>
   <div class='tfield' id="output"></div>
 </div>

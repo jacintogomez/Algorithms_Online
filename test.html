@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dynamic Select Dropdown</title>
+  <style>
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <select id="mySelect" onchange="toggleTextInput()">
+    <option value="option1">Option 1</option>
+    <option value="option2">Option 2</option>
+    <option value="option3">Option 3</option>
+  </select>
+
+  <div id="textInputContainer" class="hidden">
+    <input type="text" id="textInput" placeholder="Enter additional parameter">
+  </div>
+
+  <script>
+    function toggleTextInput() {
+      var selectElement = document.getElementById("mySelect");
+      var textInputContainer = document.getElementById("textInputContainer");
+
+      // Check if the selected value requires the additional parameter
+      if (selectElement.value === "option2") {
+        textInputContainer.classList.remove("hidden");
+      } else {
+        textInputContainer.classList.add("hidden");
+      }
+    }
+  </script>
+</body>
+</html>
