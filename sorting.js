@@ -3,6 +3,7 @@
 outputdiv=document.getElementById("output");
 
 function main(choice,s){
+    cleartext();
     let ar=makeintoarray(s);
     appendtext('');
     switch(choice){
@@ -491,4 +492,8 @@ function appendtext(text){
 
 function addtext(text){
     outputdiv.innerHTML+=text;
+}
+
+function cleartext(){
+    outputdiv.innerHTML='';
 }
