@@ -296,7 +296,8 @@ function bucket(ar,bn){
             all[Math.floor((ar[i]-min)/rnge)].push(ar[i]);
         }
     }
-    appendtext("Sort elements of specific ranges into buckets:");
+    appendtext("Number of buckets used: "+buckets);
+    appendtext("Sorting elements of specific ranges into buckets:");
     for(let j=0;j<all.length;j++){
         let bucketnum=j+1;
         addtext("Bucket "+bucketnum+": ");

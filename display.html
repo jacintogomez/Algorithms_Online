@@ -51,20 +51,54 @@
       padding: 10px;
     }
     .tfield{
+        background-color: black;
+        color: white;
         font-family: monospace;
-        height: 400px;
+        height: 500px;
         width: 800px;
         position: absolute;
         overflow-y: auto;
         resize: vertical;
+        text-align: left;
     }
   </style>
 </head>
 <body>
 <h1 style='text-align:center;'>Trace Your Sorting Algorithm</h1>
 <div class="half">
-    <h4 style='text-align:center;'>Enter your array with proper formatting, then pick an algo to run on it</h4>
-    <h6 style='text-align:center;'>Enter integers without brackets, separated by spaces example: enter [3,1,2] as 3 1 2</h6><br><br>
+    <h3>Mergesort</h3>
+    <h6>Recursive. This breaks the array into 2 smaller arrays until the base case of an array of size 1 is reached,
+        then merges these auxiliary arrays in sorted order. This ends up being efficient since each auxiliary array
+        going up the call stack will already be in sorted order.</h6>
+    <h3>Insertion Sort</h3>
+    <h6>For each element, insert it by pushing it back until it's in its proper spot in the sorted part of the array.</h6>
+    <h3>Selection Sort</h3>
+    <h6>Go through the unsorted portion of the array to select the next smallest element, and swap with the current.</h6>
+    <h3>Bubble Sort</h3>
+    <h6>Compare side by side elements and swap if the left one is larger; with each trial of this the next largest
+        element 'bubbles' to the top. This needs to be done for n passes, since each pass only brings the
+        next largest element to the top.</h6>
+    <h3>Quicksort</h3>
+    <h6>Recursive. For each call, a random element called the pivot is chosen and all elements less than it are
+        placed to the left, and all elements greater are placed to the right. It is then recursively called on those two halves.
+        A function called partition is used to select the pivot either randomly, or as a fixed array index (here it is fixed, the last index).</h6>
+    <h3>Heapsort</h3>
+    <h6>This forms a max heap (a tree but with the condition that a parent is greater than a child),
+        and for each node starting from the last leaf, switches it with the root node and calls
+        a function called heapify, which restructures the tree so that the max element is on top again. Each time a max
+        element is removed, it is essentially at the end of an array; in other words, is now in sorted position. It should
+        be noted that heapsort itself is not recursive, but it calls heapify which is.</h6>
+    <h3>Counting Sort</h3>
+    <h6>Create two new arrays, one counting the frequency of occurrence of each number in the array (then adjusted
+        to represent the array index), and the other to hold the output array. The output array at index i is updated with the
+        value of indexarray[originalarray[i]] for each i in range n. This results in linear runtime, but it only works
+        if the range of numbers is known beforehand. This is also a stable sort, meaning the order of repeated values doesn't change</h6>
+    <h3>Radix Sort</h3>
+    <h6>This will first sort all elements by the digit in the 1's place, then by the digit in the 10's place.. continuing
+          through to the last digit. The sorting is done with some stable sorting algorithm (counting sort, for example).</h6>
+    <h3>Bucket Sort</h3>
+    <h6>Adjust input so they are all in range [0:1), and divide range into buckets where certain ranges of values will go.
+          These buckets, which will ideally be near-sorted, are then sorted using insertion sort.</h6>
 </div>
 <div class="half">
 <div class=''>
@@ -87,6 +121,7 @@
         <input type="text" id="tinput" placeholder="# of buckets">
       </div>
       <button onclick='main(document.getElementById("algos").value,document.getElementById("inputfield").value,document.getElementById("tinput").value)'>Sort</button>
+    <br><br>
   <div class='tfield' id="output"></div>
     </div>
 </div>
