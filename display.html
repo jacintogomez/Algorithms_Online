@@ -17,6 +17,12 @@
       border: 2px solid;
       border-radius: 5px;
     }
+    .half{
+        width:50%;
+        float: left;
+        display: inline-block;
+        text-align: center;
+    }
     .hidden {
       display: none;
     }
@@ -56,9 +62,12 @@
 </head>
 <body>
 <h1 style='text-align:center;'>Trace Your Sorting Algorithm</h1>
-<h4 style='text-align:center;'>Enter your array with proper formatting, then pick an algo to run on it</h4>
-<h6 style='text-align:center;'>Enter integers without brackets, separated by spaces example: enter [3,1,2] as 3 1 2</h6><br><br>
-<div class='center'>
+<div class="half">
+    <h4 style='text-align:center;'>Enter your array with proper formatting, then pick an algo to run on it</h4>
+    <h6 style='text-align:center;'>Enter integers without brackets, separated by spaces example: enter [3,1,2] as 3 1 2</h6><br><br>
+</div>
+<div class="half">
+<div class=''>
     <label for="algos">Choose an algorithm:</label>
     <select name="algos" id="algos" onchange="toggleTextInput()">
     <option value="merge">Mergesort</option>
@@ -72,15 +81,14 @@
     <option value="bucket">Bucket Sort</option>
   </select>
   <br><br>
-  <div class=''>
       <input type='text' id='inputfield' placeholder='example: enter [3,1,2] as 3 1 2'><br><br>
       <div id="numbuckets" class="hidden">
           <h4>If you want to choose your number of buckets then enter it below,<br>otherwise enter 0 to use the square root of n</h4>
         <input type="text" id="tinput" placeholder="# of buckets">
       </div>
       <button onclick='main(document.getElementById("algos").value,document.getElementById("inputfield").value,document.getElementById("tinput").value)'>Sort</button>
-  </div>
   <div class='tfield' id="output"></div>
+    </div>
 </div>
   <script src="sorting.js">
   </script>
