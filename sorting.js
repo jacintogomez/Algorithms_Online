@@ -475,10 +475,8 @@ function printsameline(ar){
 }
 
 function makeintoarray(s){
-    let real=[];
-    for(let x=0;x<s.length;x+=2){
-        real.push(parseInt(s[x]));
-    }
+    let stnum=s.split(" ");
+    let real=stnum.map(Number);
     return real;
 }
 
