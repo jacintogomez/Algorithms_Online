@@ -109,7 +109,7 @@ function insertion(ar){
         print(ar);
         printsortedportion(countspaces(ar,i));
         if(key!==temp) {
-            appendtext(key+" was the next element in line, and was inserted before ");
+            appendtext(key+" was the next element in line, and was inserted before "+temp);
         }else{
             appendtext("next element was the largest so far, no insertions were necessary");
         }
@@ -416,7 +416,7 @@ function printsortedportionquick(index,ve){
     else{spacestoindex++;}
     for(let i=1;i<=spacestoindex;i++){addtext("_");}
     addtext("|");
-    for(let i=1;i<=pivotspaces;i++){addtext(" ");}
+    for(let k=1;k<=pivotspaces;k++){addtext('&nbsp');}
     addtext("|");
     for(let i=1;i<=afterpiv;i++){addtext("_");}
     if(index!==ve.length-1){addtext("|");}
