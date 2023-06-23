@@ -34,6 +34,9 @@ function main(choice,s,bn){
         case 'bucket':
             bucket(ar,bn);
             break;
+        case 'bogo':
+            bogo(ar,res);
+            break;
         default:
             break;
     }
@@ -317,6 +320,41 @@ function bucket(ar,bn){
                 k++;
             }
         }
+    }
+}
+
+function bogo(ar){
+    let finished=false;
+    bogosort(ar,finished);
+    if(!finished){
+        cout<<"Stopped after 100 iterations, was not sorted :(";
+    }
+}
+
+function issorted(ar){
+    for(let x=0;x<ar.length-1;x++){
+        if(ar[x]>ar[x+1]){return false;}
+    }
+    return true;
+}
+
+function shuff(ar,it){
+    //int n=ar.size();
+    random_device gen;
+    mt19937 rng(gen());
+    shuffle(ar.begin(),ar.end(),rng);
+    printsameline(ar);
+    cout<<"<--- Attempt "<<it<<endl;
+}
+
+function bogosort(ar,result){
+    let iteration=1;
+    while(!issorted(ar)&&iteration<=100){
+        shuff(ar,iteration);
+        iteration++;
+    }
+    if(iteration<=100){
+        result=true;
     }
 }
 
