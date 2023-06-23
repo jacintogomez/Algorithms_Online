@@ -327,7 +327,7 @@ function bogo(ar){
     let finished=false;
     bogosort(ar,finished);
     if(!finished){
-        cout<<"Stopped after 100 iterations, was not sorted :(";
+        appendtext("Stopped after 100 iterations, was not sorted :(");
     }
 }
 
@@ -339,12 +339,11 @@ function issorted(ar){
 }
 
 function shuff(ar,it){
-    //int n=ar.size();
     random_device gen;
     mt19937 rng(gen());
     shuffle(ar.begin(),ar.end(),rng);
     printsameline(ar);
-    cout<<"<--- Attempt "<<it<<endl;
+    appendtext("<--- Attempt "+it);
 }
 
 function bogosort(ar,result){
