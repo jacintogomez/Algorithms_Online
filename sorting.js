@@ -35,7 +35,7 @@ function main(choice,s,bn){
             bucket(ar,bn);
             break;
         case 'bogo':
-            bogo(ar,res);
+            bogo(ar);
             break;
         default:
             break;
@@ -324,8 +324,8 @@ function bucket(ar,bn){
 }
 
 function bogo(ar){
-    let finished=false;
-    bogosort(ar,finished);
+    let its=false;
+    let finished=bogosort(ar,its);
     if(!finished){
         appendtext("Stopped after 100 iterations, was not sorted :(");
     }
@@ -341,7 +341,7 @@ function issorted(ar){
 function shuff(ar,it){
     let copy=[];
     let total=ar.length;
-    for(let y=0;y<total-1;y++){
+    for(let y=0;y<total;y++){
         let choice=Math.floor(Math.random()*ar.length);
         copy.push(ar[choice]);
         ar.splice(choice,1);
@@ -357,9 +357,7 @@ function bogosort(ar,result){
         shuff(ar,iteration);
         iteration++;
     }
-    if(iteration<=100){
-        result=true;
-    }
+    return iteration<=100;
 }
 
 function countspacesmerge(ve,index){
