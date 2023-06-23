@@ -324,9 +324,14 @@ function bucket(ar,bn){
 }
 
 function bogo(ar){
-    let its=false;
-    let finished=bogosort(ar,its);
-    if(!finished){
+    let iteration=1;
+    while(!issorted(ar)&&iteration<=100){
+        printsameline(ar);
+        appendtext("<----- niggers");
+        shuff(ar,iteration);
+        iteration++;
+    }
+    if(iteration>100){
         appendtext("Stopped after 100 iterations, was not sorted :(");
     }
 }
@@ -342,6 +347,7 @@ function shuff(ar,it){
     let copy=[];
     let total=ar.length;
     for(let y=0;y<total;y++){
+        addtext("size is "+ar.length);
         let choice=Math.floor(Math.random()*ar.length);
         copy.push(ar[choice]);
         ar.splice(choice,1);
@@ -349,15 +355,6 @@ function shuff(ar,it){
     ar=copy;
     printsameline(ar);
     appendtext("<--- Attempt "+it);
-}
-
-function bogosort(ar,result){
-    let iteration=1;
-    while(!issorted(ar)&&iteration<=100){
-        shuff(ar,iteration);
-        iteration++;
-    }
-    return iteration<=100;
 }
 
 function countspacesmerge(ve,index){
