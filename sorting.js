@@ -339,9 +339,14 @@ function issorted(ar){
 }
 
 function shuff(ar,it){
-    random_device gen;
-    mt19937 rng(gen());
-    shuffle(ar.begin(),ar.end(),rng);
+    let copy=[];
+    let total=ar.length;
+    for(let y=0;y<total-1;y++){
+        let choice=Math.floor(Math.random()*ar.length);
+        copy.push(ar[choice]);
+        ar.splice(choice,1);
+    }
+    ar=copy;
     printsameline(ar);
     appendtext("<--- Attempt "+it);
 }
