@@ -67,14 +67,14 @@
 <br><br>
 <div class="lefthalf">
     <h3>Mergesort</h3>
-    <h6>Recursive. This breaks the array into 2 smaller arrays until the base case of an array of size 1 is reached,
+    <h6>Recursive. This breaks the array into 2 smaller arrays, then those into 2 more smaller arrays, and continues until the base case of an array of size 1 is reached,
         then merges these auxiliary arrays in sorted order. This ends up being efficient since each auxiliary array
         going up the call stack will already be in sorted order.</h6>
-    <h5 style="font-family:monospace;">Time Complexity: Theta(nlog(n))</h5>
+    <h5 style="font-family:monospace;">Time Complexity: Theta(n*log(n))</h5>
     <h5 style="font-family:monospace;">Space Complexity: O(n)</h5>
     <h5>---------------------------------------------------------------------------------------------------------</h5>
     <h3>Insertion Sort</h3>
-    <h6>For each element, insert it by pushing it back until it's in its proper spot in the sorted part of the array.</h6>
+    <h6>For each element, insert it into the sorted portion by pushing it back until it's in the proper spot.</h6>
     <h5 style="font-family:monospace;">Time Complexity: Omega(n), Theta(n^2), O(n^2)</h5>
     <h5 style="font-family:monospace;">Space Complexity: O(1)</h5>
     <h5>---------------------------------------------------------------------------------------------------------</h5>
@@ -91,11 +91,11 @@
     <h5 style="font-family:monospace;">Space Complexity: O(1)</h5>
     <h5>---------------------------------------------------------------------------------------------------------</h5>
     <h3>Quicksort</h3>
-    <h6>Recursive. For each call, a random element called the pivot is chosen and all elements less than it are
-        placed to the left, and all elements greater are placed to the right. It is then recursively called on those two halves.
-        A function called partition is used to select the pivot either randomly, or as a fixed array index (here it is fixed, the last index).</h6>
-    <h5 style="font-family:monospace;">Time Complexity: Omega(nlog(n)), Theta(nlog(n)), O(n^2)</h5>
-    <h5 style="font-family:monospace;">Space Complexity: O(nlog(n))</h5>
+    <h6>Recursive. For each call, a random element (we refer to as the pivot) is chosen and all elements less than it are
+        placed to the left, and all elements greater are placed to the right. It is then recursively called on both of those two halves.
+        A partition function is called in each iteration to select the pivot, which can make it either a random selection or a fixed array index (here it is fixed, the last index).</h6>
+    <h5 style="font-family:monospace;">Time Complexity: Omega(n*log(n)), Theta(n*log(n)), O(n^2)</h5>
+    <h5 style="font-family:monospace;">Space Complexity: O(n*log(n))</h5>
     <h5>---------------------------------------------------------------------------------------------------------</h5>
     <h3>Heapsort</h3>
     <h6>This forms a max heap (a tree but with the condition that a parent is greater than a child),
@@ -107,28 +107,28 @@
     <h5 style="font-family:monospace;">Space Complexity: O(1)</h5>
     <h5>---------------------------------------------------------------------------------------------------------</h5>
     <h3>Counting Sort</h3>
-    <h6>Create two new arrays, one counting the frequency of occurrence of each number in the array (then adjusted
+    <h6>Creates two new arrays, one counting the frequency of occurrence of each number in the array (then adjusted
         to represent the array index), and the other to hold the output array. The output array at index i is updated with the
         value of indexarray[originalarray[i]] for each i in range n. This results in linear runtime, but it only works
         if the range of numbers is known beforehand. This is also a stable sort, meaning the order of repeated values doesn't change</h6>
-    <h5 style="font-family:monospace;">Time Complexity: Theta(n+k) k=range of possible values</h5>
+    <h5 style="font-family:monospace;">Time Complexity: Theta(n+k), k=range of possible values</h5>
     <h5 style="font-family:monospace;">Space Complexity: O(k)</h5>
     <h5>---------------------------------------------------------------------------------------------------------</h5>
     <h3>Radix Sort</h3>
     <h6>This will first sort all elements by the digit in the 1's place, then by the digit in the 10's place.. continuing
           through to the last digit. The sorting is done with some stable sorting algorithm (counting sort, for example).</h6>
-    <h5 style="font-family:monospace;">Time Complexity: Theta(d(n+k)) d=max # of digits, k=base of whatever number we are using (usually 10)</h5>
+    <h5 style="font-family:monospace;">Time Complexity: Theta(d(n+k)), d=max # of digits, k=base of whatever number we are using (usually 10)</h5>
     <h5 style="font-family:monospace;">Space Complexity: O(n+k)</h5>
     <h5>---------------------------------------------------------------------------------------------------------</h5>
     <h3>Bucket Sort</h3>
     <h6>Adjust input so they are all in range [0:1), and divide range into buckets where certain ranges of values will go.
-          These buckets, which will ideally be near-sorted, are then sorted using insertion sort.</h6>
-    <h5 style="font-family:monospace;">Time Complexity: Omega(n+k), Theta(n+k), O(n^2)</h5>
+          Each of these buckets, which are ideally near-sorted, are then sorted using insertion sort and concatenated.</h6>
+    <h5 style="font-family:monospace;">Time Complexity: Omega(n+k), Theta(n+k), O(n^2), k=# of buckets</h5>
     <h5 style="font-family:monospace;">Space Complexity: O(n)</h5>
     <h5>---------------------------------------------------------------------------------------------------------</h5>
     <h3>Bogosort</h3>
-    <h6>Create a random permutation the array and see if it is sorted or not; repeat until sorted. You would
-        never use this in real life, I just included it for fun.</h6>
+    <h6>Creates a random permutation the array and sees if it is sorted or not; repeats this until sorted. You would
+        never use this in real life, it is just a common thought experiment that I included for fun.</h6>
     <h5 style="font-family:monospace;">Time Complexity: Omega(0), Theta((n^2)!), O(Infinity)</h5>
     <h5 style="font-family:monospace;">Space Complexity: O(1)</h5>
     <h5>---------------------------------------------------------------------------------------------------------</h5>
