@@ -512,7 +512,7 @@ function printsameline(ar){
 }
 
 function makeintoarray(s){
-    let stnum=s.split(" ");
+    let stnum=s.trim().split(" ");
     let real=stnum.map(Number);
     return real;
 }
