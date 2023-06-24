@@ -35,7 +35,7 @@ function main(choice,s,bn){
             bucket(ar,bn);
             break;
         case 'bogo':
-            bogo(ar);
+            ar=bogo(ar);
             break;
         default:
             break;
@@ -324,16 +324,16 @@ function bucket(ar,bn){
 }
 
 function bogo(ar){
+    appendtext("Will try the first 100 permutations...");
     let iteration=1;
     while(!issorted(ar)&&iteration<=100){
-        printsameline(ar);
-        appendtext("<----- niggers");
-        shuff(ar,iteration);
+        ar=shuff(ar,iteration);
         iteration++;
     }
     if(iteration>100){
         appendtext("Stopped after 100 iterations, was not sorted :(");
     }
+    return ar;
 }
 
 function issorted(ar){
@@ -347,14 +347,14 @@ function shuff(ar,it){
     let copy=[];
     let total=ar.length;
     for(let y=0;y<total;y++){
-        addtext("size is "+ar.length);
         let choice=Math.floor(Math.random()*ar.length);
         copy.push(ar[choice]);
         ar.splice(choice,1);
     }
     ar=copy;
     printsameline(ar);
-    appendtext("<--- Attempt "+it);
+    appendtext("<--- new permutation: attempt "+it);
+    return ar;
 }
 
 function countspacesmerge(ve,index){
