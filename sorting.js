@@ -34,6 +34,9 @@ function main(choice,s,bn){
         case 'bucket':
             bucket(ar,bn);
             break;
+        case 'bogo':
+            ar=bogo(ar);
+            break;
         default:
             break;
     }
@@ -320,6 +323,40 @@ function bucket(ar,bn){
     }
 }
 
+function bogo(ar){
+    appendtext("Will try the first 100 permutations...");
+    let iteration=1;
+    while(!issorted(ar)&&iteration<=100){
+        ar=shuff(ar,iteration);
+        iteration++;
+    }
+    if(iteration>100){
+        appendtext("Stopped after 100 iterations, was not sorted :(");
+    }
+    return ar;
+}
+
+function issorted(ar){
+    for(let x=0;x<ar.length-1;x++){
+        if(ar[x]>ar[x+1]){return false;}
+    }
+    return true;
+}
+
+function shuff(ar,it){
+    let copy=[];
+    let total=ar.length;
+    for(let y=0;y<total;y++){
+        let choice=Math.floor(Math.random()*ar.length);
+        copy.push(ar[choice]);
+        ar.splice(choice,1);
+    }
+    ar=copy;
+    printsameline(ar);
+    appendtext("<--- new permutation: attempt "+it);
+    return ar;
+}
+
 function countspacesmerge(ve,index){
     let count=0;
     for(let i=0;i<index;i++){
@@ -475,7 +512,7 @@ function printsameline(ar){
 }
 
 function makeintoarray(s){
-    let stnum=s.split(" ");
+    let stnum=s.trim().split(" ");
     let real=stnum.map(Number);
     return real;
 }
