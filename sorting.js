@@ -5,11 +5,11 @@ outputdiv=document.getElementById("output");
 function main(choice,s,bn){
     cleartext();
     let ar=makeintoarray(s);
+    appendtext('');
     if(ar==='invalid'){
-        appendtext('Invalid array entry - must be all ints');
+        appendtext('Invalid array entry, must be all ints');
         return;
     }
-    appendtext('');
     switch(choice){
         case 'merge':
             merge(ar,0,ar.length-1,0);
