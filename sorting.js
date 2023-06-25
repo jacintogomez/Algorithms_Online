@@ -36,6 +36,10 @@ function main(choice,s,bn){
             radix(ar);
             break;
         case 'bucket':
+            if(!isanint(parseInt(bn))){
+                appendtext('Invalid bucket number, must be an int');
+                return;
+            }
             bucket(ar,bn);
             break;
         case 'bogo':
@@ -357,7 +361,7 @@ function shuff(ar,it){
     }
     ar=copy;
     printsameline(ar);
-    appendtext("<--- new permutation: attempt "+it);
+    appendtext(" <--- new permutation: attempt "+it);
     return ar;
 }
 
@@ -524,11 +528,15 @@ function makeintoarray(s){
 
 function isallints(pro){
     for(let i=0;i<pro.length;i++){
-        if(typeof pro[i]!=='number'||!Number.isInteger(pro[i])){
+        if(!isanint(pro[i])){
             return false;
         }
     }
     return true;
+}
+
+function isanint(cand){
+    return !(typeof cand!=='number'||!Number.isInteger(cand))
 }
 
 function appendtext(text){
