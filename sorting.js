@@ -5,6 +5,10 @@ outputdiv=document.getElementById("output");
 function main(choice,s,bn){
     cleartext();
     let ar=makeintoarray(s);
+    if(ar==='invalid'){
+        appendtext('Invalid array entry - must be all ints');
+        return;
+    }
     appendtext('');
     switch(choice){
         case 'merge':
@@ -514,7 +518,17 @@ function printsameline(ar){
 function makeintoarray(s){
     let stnum=s.trim().split(" ");
     let real=stnum.map(Number);
-    return real;
+    if(isallints(real)){return real;}
+    else{return 'invalid';}
+}
+
+function isallints(pro){
+    for(let i=0;i<pro.length;i++){
+        if(typeof pro[i]!=='number'||!Number.isInteger(pro[i])){
+            return false;
+        }
+    }
+    return true;
 }
 
 function appendtext(text){
