@@ -63,6 +63,7 @@
 </head>
 <body>
 <h1 style='text-align:center;'>Trace Your Sorting Algorithm</h1>
+<h5 style='text-align:center;'>Created by Jacinto Gomez</h5>
 <h4 style='text-align:center;'>Select an algorithm to the right and enter an array to watch it be sorted step by step<br>The left has some descriptions of how the algorithms work</h4>
 <br><br>
 <div class="lefthalf">
@@ -103,7 +104,7 @@
         a function called heapify, which restructures the tree so that the max element is on top again. Each time a max
         element is removed, it is essentially at the end of an array; in other words, is now in sorted position. It should
         be noted that heapsort itself is not recursive, but it calls heapify which is.</h6>
-    <h5 style="font-family:monospace;">Time Complexity: Theta(nlog(n))</h5>
+    <h5 style="font-family:monospace;">Time Complexity: Theta(n*log(n))</h5>
     <h5 style="font-family:monospace;">Space Complexity: O(1)</h5>
     <h5>---------------------------------------------------------------------------------------------------------</h5>
     <h3>Counting Sort</h3>
@@ -129,7 +130,7 @@
     <h3>Bogosort</h3>
     <h6>Creates a random permutation the array and sees if it is sorted or not; repeats this until sorted. You would
         never use this in real life, it is just a common thought experiment that I included for fun.</h6>
-    <h5 style="font-family:monospace;">Time Complexity: Omega(0), Theta((n^2)!), O(Infinity)</h5>
+    <h5 style="font-family:monospace;">Time Complexity: Omega(0), Theta(n*(n!)), O(Infinity)</h5>
     <h5 style="font-family:monospace;">Space Complexity: O(1)</h5>
     <h5>---------------------------------------------------------------------------------------------------------</h5>
 </div>
