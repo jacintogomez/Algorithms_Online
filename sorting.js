@@ -36,6 +36,9 @@ function main(choice,s,bn){
             radix(ar);
             break;
         case 'bucket':
+            if(bn===''){
+                bn='0';
+            }
             if(!isanint(parseInt(bn))){
                 appendtext('Invalid bucket number, must be an int');
                 return;

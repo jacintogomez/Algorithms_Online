@@ -5,18 +5,6 @@
   <title>Algo Tracer</title>
   <link rel="icon" href="https://paper-attachments.dropbox.com/s_2D428973624E7FC84C7D69D11421DE762BEA6B6F3361231FCDCAE0425D14526F_1664885448372_Untitled.drawio+17.png">
   <style>
-  	.fancy{
-    	color: white;
-        text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
-	  }
-    .error{
-    	color: white;
-        text-shadow: 1px 1px 2px black, 0 0 25px red, 0 0 5px darkred;
-	  }
-    .surround{
-      border: 2px solid;
-      border-radius: 5px;
-    }
     .lefthalf{
         width:35%;
         float: left;
@@ -153,7 +141,7 @@
   <br><br>
       <input type='text' id='inputfield' style="width:250px;" placeholder='example: enter [3,1,2] as 3 1 2'><br><br>
       <div id="numbuckets" class="hidden">
-          <h4>If you want to choose your number of buckets then enter it below,<br>otherwise enter 0 to use the square root of n</h4>
+          <h4>If you want to choose your number of buckets then enter it below,<br>blank or input<1 will result in the automatic use the square root of n</h4>
         <input type="text" id="tinput" placeholder="# of buckets">
       </div>
       <button onclick='main(document.getElementById("algos").value,document.getElementById("inputfield").value,document.getElementById("tinput").value)'>Sort</button>
