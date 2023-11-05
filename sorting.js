@@ -554,7 +554,7 @@ function cleartext(){
     outputdiv.innerHTML='';
 }
 
-function toggleTextInput() {
+function toggletextinput() {
   let selectElement = document.getElementById("algos");
   let textInputContainer = document.getElementById("numbuckets");
   if (selectElement.value === "bucket") {
@@ -562,4 +562,13 @@ function toggleTextInput() {
   } else {
     textInputContainer.classList.add("hidden");
   }
+}
+
+function timedelay(time){
+    const start=Date.now();
+    while(Date.now()<start+time){}
+}
+
+async function delayexecution(timeInSeconds) {
+  return new Promise(resolve => setTimeout(resolve, timeInSeconds*1000));
 }
