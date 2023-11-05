@@ -554,7 +554,7 @@ function cleartext(){
     outputdiv.innerHTML='';
 }
 
-function toggleTextInput() {
+function toggletextinput() {
   let selectElement = document.getElementById("algos");
   let textInputContainer = document.getElementById("numbuckets");
   if (selectElement.value === "bucket") {
