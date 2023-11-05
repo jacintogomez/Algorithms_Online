@@ -563,3 +563,12 @@ function toggleTextInput() {
     textInputContainer.classList.add("hidden");
   }
 }
+
+function timedelay(time){
+    const start=Date.now();
+    while(Date.now()<start+time){}
+}
+
+async function delayexecution(timeInSeconds) {
+  return new Promise(resolve => setTimeout(resolve, timeInSeconds*1000));
+}

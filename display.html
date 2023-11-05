@@ -50,7 +50,7 @@
   </style>
 </head>
 <body>
-<h1 style='text-align:center;'>Trace Your Sorting Algorithm</h1>
+<h1 style='text-align:center;'>Algo Tracer</h1>
 <h5 style='text-align:center;'>Created by Jacinto Gomez</h5>
 <h4 style='text-align:center;'>Select an algorithm to the right and enter an array to watch it be sorted step by step<br>The left has some descriptions of how the algorithms work</h4>
 <br><br>
@@ -111,7 +111,7 @@
     <h5 style="font-family:monospace;">Space Complexity: O(n+k)</h5>
     <h5>---------------------------------------------------------------------------------------------------------</h5>
     <h3>Bucket Sort</h3>
-    <h6>Adjust input so they are all in range [0:1), and divide range into buckets where certain ranges of values will go.
+    <h6>Adjust input so that they are all in range [0:1), and divide range into buckets where certain ranges of values will go.
           Each of these buckets, which are ideally near-sorted, are then sorted using insertion sort and concatenated.</h6>
     <h5 style="font-family:monospace;">Time Complexity: Omega(n+k), Theta(n+k), O(n^2), k=# of buckets</h5>
     <h5 style="font-family:monospace;">Space Complexity: O(n)</h5>
@@ -126,7 +126,7 @@
 <div class="righthalf">
 <div class=''>
     <label for="algos">Choose an algorithm:</label>
-    <select name="algos" id="algos" onchange="toggleTextInput()">
+    <select name="algos" id="algos" onchange="toggletextinput()">
     <option value="merge">Mergesort</option>
     <option value="insert">Insertion Sort</option>
     <option value="select">Selection Sort</option>
