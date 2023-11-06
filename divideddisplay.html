@@ -24,7 +24,11 @@
       display: none;
     }
     input:hover{
-      border: 1px solid aqua;
+      border: 2px solid aqua;
+      box-shadow: 5px 10px 18px black;
+    }
+    button:hover{
+      border: 2px solid aqua;
       box-shadow: 5px 10px 18px black;
     }
     .center{
@@ -138,13 +142,13 @@
                     <option value="bogo">Bogosort</option>
                 </select>
                 <br><br>
-                <input type='text' id='inputfield' style="width:250px;border-radius:10px;" placeholder='example: enter [3,1,2] as 3 1 2'><br><br>
+                <input type='text' id='inputfield' style="width:250px;border-radius:10px;padding-left: 7px;" placeholder='example: enter [3,1,2] as 3 1 2'><br><br>
                 <div id="numbuckets" class="hidden">
                     <h4>If you want to choose your number of buckets then enter it below,<br>blank or input<1 will result in the automatic use the square root of n</h4>
-                    <input style="border-radius:10px;" type="text" id="tinput" placeholder="# of buckets">
+                    <input style="border-radius:10px;padding-left: 7px;" type="text" id="tinput" placeholder="# of buckets">
                     <br><br>
                 </div>
-                <button style="border-radius:10px;" onclick='main(document.getElementById("algos").value,document.getElementById("inputfield").value,document.getElementById("tinput").value)'>Sort</button>
+                <button style="border-radius:10px;background-color:mediumpurple;color:white;" onclick='main(document.getElementById("algos").value,document.getElementById("inputfield").value,document.getElementById("tinput").value)'>Sort</button>
                 <br><br>
             </div>
             <div class='console' id="output"></div>
