@@ -39,9 +39,9 @@
         background-color: black;
         color: white;
         font-family: monospace;
-        width: 900px;
+        width: 950px;
         position: absolute;
-        overflow-y: auto;
+        overflow-y: scroll;
         resize: vertical;
         text-align: left;
     }
@@ -122,10 +122,10 @@
             <h1 style='text-align:center;'>Algo Tracer</h1>
             <h5 style='text-align:center;'>Created by Jacinto Gomez</h5>
             <h4 style='text-align:center;'>Select an algorithm to the right and enter an array to watch it be sorted step by step<br>The left has some descriptions of how the algorithms work</h4>
-            <br><br><br><br><br><br>
+            <br>
             <div class="center">
                 <label for="algos">Choose an algorithm:</label>
-                <select name="algos" id="algos" onchange="toggletextinput()">
+                <select style="border-radius:10px;" name="algos" id="algos" onchange="toggletextinput()">
                     <option value="merge">Mergesort</option>
                     <option value="insert">Insertion Sort</option>
                     <option value="select">Selection Sort</option>
@@ -138,13 +138,14 @@
                     <option value="bogo">Bogosort</option>
                 </select>
                 <br><br>
-                <input type='text' id='inputfield' style="width:250px;" placeholder='example: enter [3,1,2] as 3 1 2'><br><br>
+                <input type='text' id='inputfield' style="width:250px;border-radius:10px;" placeholder='example: enter [3,1,2] as 3 1 2'><br><br>
                 <div id="numbuckets" class="hidden">
                     <h4>If you want to choose your number of buckets then enter it below,<br>blank or input<1 will result in the automatic use the square root of n</h4>
-                    <input type="text" id="tinput" placeholder="# of buckets">
+                    <input style="border-radius:10px;" type="text" id="tinput" placeholder="# of buckets">
+                    <br><br>
                 </div>
-                <button onclick='main(document.getElementById("algos").value,document.getElementById("inputfield").value,document.getElementById("tinput").value)'>Sort</button>
-                <br><br><br><br><br><br>
+                <button style="border-radius:10px;" onclick='main(document.getElementById("algos").value,document.getElementById("inputfield").value,document.getElementById("tinput").value)'>Sort</button>
+                <br><br>
             </div>
             <div class='console' id="output"></div>
         </div>
