@@ -14,6 +14,8 @@
         flex: 1;
         overflow-y: scroll;
         border: 1px solid #ccc;
+        text-align: center;
+        padding: 3px;
     }
     .split-right{
         flex: 2;
@@ -24,7 +26,11 @@
       display: none;
     }
     input:hover{
-      border: 1px solid aqua;
+      border: 2px solid aqua;
+      box-shadow: 5px 10px 18px black;
+    }
+    button:hover{
+      border: 2px solid aqua;
       box-shadow: 5px 10px 18px black;
     }
     .center{
@@ -32,16 +38,16 @@
     }
     body {
       background-image: url("https://marketplace.canva.com/EAD2962NKnQ/2/0/1600w/canva-rainbow-gradient-pink-and-purple-zoom-virtual-background-_Tcjok-d9b4.jpg");
-      background-repeat: no-repeat;
+      background-repeat: repeat;
       background-size: cover;
     }
     .console{
         background-color: black;
         color: white;
         font-family: monospace;
-        width: 900px;
+        width: 950px;
         position: absolute;
-        overflow-y: auto;
+        overflow-y: scroll;
         resize: vertical;
         text-align: left;
     }
@@ -56,31 +62,31 @@
                 going up the call stack will already be in sorted order.</h6>
             <h5 style="font-family:monospace;">Time Complexity: Theta(n*log(n))</h5>
             <h5 style="font-family:monospace;">Space Complexity: O(n)</h5>
-            <h5>---------------------------------------------------------------------------------------------------------</h5>
+            <h5>------------------------------------------------------------------------------------------------------</h5>
             <h3>Insertion Sort</h3>
             <h6>For each element, insert it into the sorted portion by pushing it back until it's in the proper spot.</h6>
             <h5 style="font-family:monospace;">Time Complexity: Omega(n), Theta(n^2), O(n^2)</h5>
             <h5 style="font-family:monospace;">Space Complexity: O(1)</h5>
-            <h5>---------------------------------------------------------------------------------------------------------</h5>
+            <h5>------------------------------------------------------------------------------------------------------</h5>
             <h3>Selection Sort</h3>
             <h6>Go through the unsorted portion of the array to select the next smallest element, and swap with the current.</h6>
             <h5 style="font-family:monospace;">Time Complexity: Theta(n^2)</h5>
             <h5 style="font-family:monospace;">Space Complexity: O(1)</h5>
-            <h5>---------------------------------------------------------------------------------------------------------</h5>
+            <h5>------------------------------------------------------------------------------------------------------</h5>
             <h3>Bubble Sort</h3>
             <h6>Compare side by side elements and swap if the left one is larger; with each trial of this the next largest
                 element 'bubbles' to the top. This needs to be done for n passes, since each pass only brings the
                 next largest element to the top.</h6>
             <h5 style="font-family:monospace;">Time Complexity: Omega(n), Theta(n^2), O(n^2)</h5>
             <h5 style="font-family:monospace;">Space Complexity: O(1)</h5>
-            <h5>---------------------------------------------------------------------------------------------------------</h5>
+            <h5>------------------------------------------------------------------------------------------------------</h5>
             <h3>Quicksort</h3>
             <h6>Recursive. For each call, a random element (we refer to as the pivot) is chosen and all elements less than it are
                 placed to the left, and all elements greater are placed to the right. It is then recursively called on both of those two halves.
                 A partition function is called in each iteration to select the pivot, which can make it either a random selection or a fixed array index (here it is fixed, the last index).</h6>
             <h5 style="font-family:monospace;">Time Complexity: Omega(n*log(n)), Theta(n*log(n)), O(n^2)</h5>
             <h5 style="font-family:monospace;">Space Complexity: O(n*log(n))</h5>
-            <h5>---------------------------------------------------------------------------------------------------------</h5>
+            <h5>------------------------------------------------------------------------------------------------------</h5>
             <h3>Heapsort</h3>
             <h6>This forms a max heap (a tree but with the condition that a parent is greater than a child),
                 and for each node starting from the last leaf, switches it with the root node and calls
@@ -89,7 +95,7 @@
                 be noted that heapsort itself is not recursive, but it calls heapify which is.</h6>
             <h5 style="font-family:monospace;">Time Complexity: Theta(n*log(n))</h5>
             <h5 style="font-family:monospace;">Space Complexity: O(1)</h5>
-            <h5>---------------------------------------------------------------------------------------------------------</h5>
+            <h5>------------------------------------------------------------------------------------------------------</h5>
             <h3>Counting Sort</h3>
             <h6>Creates two new arrays, one counting the frequency of occurrence of each number in the array (then adjusted
                 to represent the array index), and the other to hold the output array. The output array at index i is updated with the
@@ -97,35 +103,35 @@
                 if the range of numbers is known beforehand. This is also a stable sort, meaning the order of repeated values doesn't change.</h6>
             <h5 style="font-family:monospace;">Time Complexity: Theta(n+k), k=range of possible values</h5>
             <h5 style="font-family:monospace;">Space Complexity: O(k)</h5>
-            <h5>---------------------------------------------------------------------------------------------------------</h5>
+            <h5>------------------------------------------------------------------------------------------------------</h5>
             <h3>Radix Sort</h3>
             <h6>This will first sort all elements by the digit in the 1's place, then by the digit in the 10's place.. continuing
                   through to the last digit. The sorting is done with some stable sorting algorithm (counting sort, for example).
-                It may seem more natural to soort by the largest digit first down to the 1's place but this mathematically will not work.</h6>
+                It may seem more natural to sort by the largest digit first down to the 1's place but this mathematically will not work.</h6>
             <h5 style="font-family:monospace;">Time Complexity: Theta(d(n+k)), d=max # of digits, k=base of whatever number we are using (usually 10)</h5>
             <h5 style="font-family:monospace;">Space Complexity: O(n+k)</h5>
-            <h5>---------------------------------------------------------------------------------------------------------</h5>
+            <h5>------------------------------------------------------------------------------------------------------</h5>
             <h3>Bucket Sort</h3>
             <h6>Adjust input so that they are all in range [0:1), and divide range into buckets where certain ranges of values will go.
                   Each of these buckets, which are ideally near-sorted, are then sorted using insertion sort and concatenated.</h6>
             <h5 style="font-family:monospace;">Time Complexity: Omega(n+k), Theta(n+k), O(n^2), k=# of buckets</h5>
             <h5 style="font-family:monospace;">Space Complexity: O(n)</h5>
-            <h5>---------------------------------------------------------------------------------------------------------</h5>
+            <h5>------------------------------------------------------------------------------------------------------</h5>
             <h3>Bogosort</h3>
             <h6>Creates a random permutation the array and sees if it is sorted or not; repeats this until sorted. You would
                 never use this in real life, it is just a common thought experiment that I included for fun.</h6>
             <h5 style="font-family:monospace;">Time Complexity: Omega(0), Theta(n*(n!)), O(Infinity)</h5>
             <h5 style="font-family:monospace;">Space Complexity: O(1)</h5>
-            <h5>---------------------------------------------------------------------------------------------------------</h5>
+            <h5>------------------------------------------------------------------------------------------------------</h5>
         </div>
         <div class="split-right">
             <h1 style='text-align:center;'>Algo Tracer</h1>
             <h5 style='text-align:center;'>Created by Jacinto Gomez</h5>
             <h4 style='text-align:center;'>Select an algorithm to the right and enter an array to watch it be sorted step by step<br>The left has some descriptions of how the algorithms work</h4>
-            <br><br><br><br><br><br>
+            <br>
             <div class="center">
                 <label for="algos">Choose an algorithm:</label>
-                <select name="algos" id="algos" onchange="toggletextinput()">
+                <select style="border-radius:10px;" name="algos" id="algos" onchange="toggletextinput()">
                     <option value="merge">Mergesort</option>
                     <option value="insert">Insertion Sort</option>
                     <option value="select">Selection Sort</option>
@@ -138,13 +144,14 @@
                     <option value="bogo">Bogosort</option>
                 </select>
                 <br><br>
-                <input type='text' id='inputfield' style="width:250px;" placeholder='example: enter [3,1,2] as 3 1 2'><br><br>
+                <input type='text' id='inputfield' style="width:250px;border-radius:10px;padding-left: 7px;" placeholder='example: enter [3,1,2] as 3 1 2'><br><br>
                 <div id="numbuckets" class="hidden">
                     <h4>If you want to choose your number of buckets then enter it below,<br>blank or input<1 will result in the automatic use the square root of n</h4>
-                    <input type="text" id="tinput" placeholder="# of buckets">
+                    <input style="border-radius:10px;padding-left: 7px;" type="text" id="tinput" placeholder="# of buckets">
+                    <br><br>
                 </div>
-                <button onclick='main(document.getElementById("algos").value,document.getElementById("inputfield").value,document.getElementById("tinput").value)'>Sort</button>
-                <br><br><br><br><br><br>
+                <button style="border-radius:10px;background-color:mediumpurple;color:white;" onclick='main(document.getElementById("algos").value,document.getElementById("inputfield").value,document.getElementById("tinput").value)'>Sort</button>
+                <br><br>
             </div>
             <div class='console' id="output"></div>
         </div>
