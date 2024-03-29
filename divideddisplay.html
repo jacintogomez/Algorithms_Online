@@ -50,13 +50,15 @@
         border-top-left-radius: 50px;
         border-top-right-radius: 50px;
         height: 450px;
-        width: 66vw;
-        position: absolute;
+        width: 60vw;
+        /*position: absolute;*/
         overflow-y: scroll;
         resize: vertical;
         text-align: left;
-        margin-top: 20px;
-        padding-left: 5%;
+        margin-top: 40px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 3%;
     }
     button{
         border-radius: 10px;
@@ -69,7 +71,7 @@
         display: flex;
     }
     .field{
-        flex: 1
+        flex: 1;
     }
     </style>
 </head>
@@ -164,13 +166,13 @@
                         <option value="bucket">Bucket Sort</option>
                         <option value="bogo">Bogosort</option>
                     </select>
-                    <input style="margin:10px;" type='text' id='inputfield' placeholder='example: enter [3,1,2] as 3 1 2'><br>
+                    <input style="margin:10px;width:200px" type='text' id='inputfield' placeholder='example: enter [3,1,2] as 3 1 2'><br>
                     <button onclick='main(document.getElementById("algos").value,document.getElementById("inputfield").value,document.getElementById("tinput").value)'>Sort</button>
                 </div>
                 <div class="field">
-                    <div id="numbuckets" class="hidden">
-                        <h4>Choose number of buckets here; blank, 0, and negative input results in automatic use of sqrt(n)</h4>
-                        <input type="text" id="tinput" placeholder="# of buckets">
+                    <div style="position:absolute;" id="numbuckets" class="hidden">
+                        <h4 style="padding-top:0;margin-top:0;padding-left:5%;padding-right:5%;">Choose number of buckets here; blank, 0, and negative input results in automatic use of sqrt(n)</h4>
+                        <input style="padding-top:2px;" type="text" id="tinput" placeholder="# of buckets">
                         <br><br>
                     </div>
                 </div>
