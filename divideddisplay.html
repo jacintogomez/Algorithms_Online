@@ -9,6 +9,7 @@
         display: flex;
         height: 100vh;
         overflow: hidden;
+        border-color: red;
     }
     .split-left{
         flex: 1;
@@ -21,7 +22,6 @@
         text-align: center;
         flex: 2;
         overflow-y: scroll;
-        border: 1px solid #ccc;
     }
     .hidden {
         display: none;
@@ -33,7 +33,11 @@
         outline: none;
         border: 2px solid purple;
     }
-    body {
+    input{
+        border-radius:10px;
+        padding-left: 7px;
+    }
+    body{
         /*background-image: url("https://marketplace.canva.com/EAD2962NKnQ/2/0/1600w/canva-rainbow-gradient-pink-and-purple-zoom-virtual-background-_Tcjok-d9b4.jpg");*/
         background-repeat: repeat;
         background-size: cover;
@@ -43,14 +47,16 @@
         background-color: black;
         color: white;
         font-family: monospace;
-        border-radius: 50px;
+        border-top-left-radius: 50px;
+        border-top-right-radius: 50px;
         height: 450px;
-        width: 900px;
+        width: 66vw;
         position: absolute;
         overflow-y: scroll;
         resize: vertical;
         text-align: left;
-        margin: 10%;
+        margin-top: 20px;
+        padding-left: 5%;
     }
     button{
         border-radius: 10px;
@@ -158,19 +164,17 @@
                         <option value="bucket">Bucket Sort</option>
                         <option value="bogo">Bogosort</option>
                     </select>
-                    <input type='text' id='inputfield' placeholder='example: enter [3,1,2] as 3 1 2'>
+                    <input style="margin:10px;" type='text' id='inputfield' placeholder='example: enter [3,1,2] as 3 1 2'><br>
+                    <button onclick='main(document.getElementById("algos").value,document.getElementById("inputfield").value,document.getElementById("tinput").value)'>Sort</button>
                 </div>
                 <div class="field">
                     <div id="numbuckets" class="hidden">
                         <h4>Choose number of buckets here; blank, 0, and negative input results in automatic use of sqrt(n)</h4>
-                        <input style="border-radius:10px;padding-left: 7px;" type="text" id="tinput" placeholder="# of buckets">
+                        <input type="text" id="tinput" placeholder="# of buckets">
                         <br><br>
                     </div>
                 </div>
             </div>
-
-
-            <button onclick='main(document.getElementById("algos").value,document.getElementById("inputfield").value,document.getElementById("tinput").value)'>Sort</button>
             <div class='console' id="output"></div>
         </div>
     </div>
