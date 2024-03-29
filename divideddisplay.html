@@ -18,6 +18,7 @@
         padding: 3px;
     }
     .split-right{
+        text-align: center;
         flex: 2;
         overflow-y: scroll;
         border: 1px solid #ccc;
@@ -25,39 +26,44 @@
     .hidden {
         display: none;
     }
-    input:hover{
-        border: 2px solid aqua;
-        /*box-shadow: 5px 10px 18px black;*/
+    input:hover,button:hover{
+        border: 2px solid mediumpurple;
     }
-    button:hover{
-        border: 2px solid aqua;
-        /*box-shadow: 5px 10px 18px black;*/
-    }
-    .center{
-        text-align: center;
+    input:focus{
+        outline: none;
+        border: 2px solid purple;
     }
     body {
-        background-image: url("https://marketplace.canva.com/EAD2962NKnQ/2/0/1600w/canva-rainbow-gradient-pink-and-purple-zoom-virtual-background-_Tcjok-d9b4.jpg");
+        /*background-image: url("https://marketplace.canva.com/EAD2962NKnQ/2/0/1600w/canva-rainbow-gradient-pink-and-purple-zoom-virtual-background-_Tcjok-d9b4.jpg");*/
         background-repeat: repeat;
         background-size: cover;
-
+        background: radial-gradient(circle,mediumpurple,aqua);
     }
     .console{
         background-color: black;
         color: white;
         font-family: monospace;
-        width: 950px;
+        border-radius: 50px;
+        height: 450px;
+        width: 900px;
         position: absolute;
         overflow-y: scroll;
         resize: vertical;
         text-align: left;
+        margin: 10%;
     }
     button{
-        border-radius:10px;
-        background-color:mediumpurple;
-        color:white;
+        border-radius: 10px;
+        background-color: mediumpurple;
+        color: white;
         width: 100px;
         height: 30px;
+    }
+    .directions{
+        display: flex;
+    }
+    .field{
+        flex: 1
     }
     </style>
 </head>
@@ -133,34 +139,38 @@
             <h5>------------------------------------------------------------------------------------------------------</h5>
         </div>
         <div class="split-right">
-            <h1 style='text-align:center;'>Algo Tracer</h1>
-            <h5 style='text-align:center;'>Created by Jacinto Gomez</h5>
-            <h4 style='text-align:center;'>Choose an algorithm and an array to sort step by step</h4>
-            <br>
-            <div class="center">
-                <label for="algos">Choose algorithm:</label>
-                <select style="border-radius:10px;" name="algos" id="algos" onchange="toggletextinput()">
-                    <option value="merge">Mergesort</option>
-                    <option value="insert">Insertion Sort</option>
-                    <option value="select">Selection Sort</option>
-                    <option value="bubble">Bubble Sort</option>
-                    <option value="quick">Quicksort</option>
-                    <option value="heap">Heapsort</option>
-                    <option value="count">Counting Sort</option>
-                    <option value="radix">Radix Sort</option>
-                    <option value="bucket">Bucket Sort</option>
-                    <option value="bogo">Bogosort</option>
-                </select>
-                <br><br>
-                <input type='text' id='inputfield' style="width:250px;border-radius:10px;padding-left: 7px;" placeholder='example: enter [3,1,2] as 3 1 2'><br><br>
-                <div id="numbuckets" class="hidden">
-                    <h4>If you want to choose your number of buckets please enter it below,<br>blank or input<1 will result in the automatic use the square root of n</h4>
-                    <input style="border-radius:10px;padding-left: 7px;" type="text" id="tinput" placeholder="# of buckets">
-                    <br><br>
+            <h1>Algo Tracer</h1>
+            <h5>Created by Jacinto Gomez</h5>
+            <h4>Choose an algorithm and an array to sort step by step</h4>
+            <div class="directions">
+                <div class="field"></div>
+                <div class="field">
+                    <label for="algos">Choose algorithm:</label>
+                    <select style="border-radius:10px;" name="algos" id="algos" onchange="toggletextinput()">
+                        <option value="merge">Mergesort</option>
+                        <option value="insert">Insertion Sort</option>
+                        <option value="select">Selection Sort</option>
+                        <option value="bubble">Bubble Sort</option>
+                        <option value="quick">Quicksort</option>
+                        <option value="heap">Heapsort</option>
+                        <option value="count">Counting Sort</option>
+                        <option value="radix">Radix Sort</option>
+                        <option value="bucket">Bucket Sort</option>
+                        <option value="bogo">Bogosort</option>
+                    </select>
+                    <input type='text' id='inputfield' placeholder='example: enter [3,1,2] as 3 1 2'>
                 </div>
-                <button onclick='main(document.getElementById("algos").value,document.getElementById("inputfield").value,document.getElementById("tinput").value)'>Sort</button>
-                <br><br>
+                <div class="field">
+                    <div id="numbuckets" class="hidden">
+                        <h4>Choose number of buckets here; blank, 0, and negative input results in automatic use of sqrt(n)</h4>
+                        <input style="border-radius:10px;padding-left: 7px;" type="text" id="tinput" placeholder="# of buckets">
+                        <br><br>
+                    </div>
+                </div>
             </div>
+
+
+            <button onclick='main(document.getElementById("algos").value,document.getElementById("inputfield").value,document.getElementById("tinput").value)'>Sort</button>
             <div class='console' id="output"></div>
         </div>
     </div>
